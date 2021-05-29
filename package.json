@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "SET NODE_ENV=production & node ./dist-server/bin/www",
-    "w:d": "SET NODE_ENV=development & babel-watch --watch ./server/views ./server/bin/www",
+    "w:d": "cross-env NODE_ENV=development babel-watch --watch ./server/views ./server/bin/www",
     "w:s": "cross-env NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
     "cleans": "rimraf dist-server",
     "cleanc": "rimraf public/js",
@@ -34,6 +34,9 @@
     "core-js": "^3.12.1",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.4",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-webpack-plugin": "^2.5.4",
     "mini-css-extract-plugin": "^1.6.0",
     "webpack": "^5.36.2",

@@ -12,16 +12,19 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.dev.config';
-import webpackDevConfig from '../webpack.dev.config';
+//import webpackDevConfig from '../webpack.dev.config';
 
 //consultar el modo en que se esta ejecutando la aplicacion
 
 const env = process.env.NODE_ENV || 'development';
+
 //Se crea aplicación express
 var app = express();
 
 //Verifica el modo de ejecución
+
 if(env === 'development'){
+  
   console.log('>Excecuting in Development Mode: Webpack hot Reloading');
   //1.Agregando la ruta HMR
   //reload=true: Habilita la recarga del frontend cuando hay cambios en el codigo fuente del frontend
@@ -34,13 +37,13 @@ const compiler=webpack(webpackConfig);
 
 //paso 4. Agregando el Middleware a la cadena de Middelewares de nuesta aplicación
 app.use(webpackDevMiddleware(compiler,{
-  publicPath:webpackDevConfig.output.publicPath
+  publicPath:webpackConfig.output.publicPath
   //Paso 5. Agregando el webpack hot Middleware
  
 }));
 app.use(webpackHotMiddleware(compiler));
 }else {
-  console.log('>Excecuting in Production Mode: Webpack hot Reloading');
+  console.log('>Excecuting in Production Mode');
 }
 
 // view engine setup
